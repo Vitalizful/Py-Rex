@@ -1,0 +1,56 @@
+
+### list path ####
+path_to_scripts=Script/
+path_to_log=Autres/
+path_to_result=Result/
+path_to_config=config_recist/
+path_to_temporarFile=test/
+
+### patient table ###
+i2b2_patient_table=
+
+### list file ####
+i2b2_request_file=request.sql
+db_param_file=db_config
+formatFile=formatFile.txt
+regexFile=listRegex.txt
+listVarRes=listVarRes.csv
+listCorAnswer=var_rules.txt
+regexFormat=formatRegex.txt
+formatDate=formatDate.txt
+i2b2_patientRequest_file=patient_numRequest.sql
+i2b2_patient_permissionFile=grant_access_patientTable.sql
+request_data_file=import_data_request.sql
+
+### input ###
+patient_selected=
+redcap_input_url=
+redcap_input_key=
+type_import=txt
+db_import_date=
+
+### input text ###
+path_CR=
+num_CR=
+
+### output ###
+output_result=csv+ann
+resultat.json=Result/Extract_recist.json
+resultat.csv=Result/Extract_recist.csv
+resultat.sqltable.name=recist_result_v1
+resultatSep=;
+api_url=
+api_key=
+
+#### opt redcap ####
+form_repeatable=
+ref_redcap_cr=
+
+# ann #
+output_annfile=./Result/brat/
+scp_host=
+scp_user=
+scp_password=
+loc_output=./Result/brat/
+
+############################################################
