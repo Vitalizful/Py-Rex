@@ -1,0 +1,5 @@
+name;group;restriction;cible;regex
+INDICATION;FORMAT;;; *(INDICATION|Indication) *\:?
+TECHNIQUE;FORMAT;;; *(TECHNIQUE|Technique) *\:?
+RESULTATS;FORMAT;i;; *R.SULTATS? *:?
+CONCLUSION;FORMAT;i;; *CONCLUSION *:
