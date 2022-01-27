@@ -1,0 +1,6 @@
+dateType;year;month;day;redateType;year;month;day;regex
+d1_mmyy;3;1;;^(\b([1-9]|0[1-9]|1[012])\b|janvier|jan|février|fevrier|fév|fev|mars|avril|avr|mai|juin|juillet|juil|aout|août|septembre|sep|sept|octobre|oct|novembre|nov|décembre|decembre|déc|dec)(\/|\.)(\d{2})$
+d2_ddmmyy;6;3;1;^(\d{1,2})(\/|\.)(\b([1-9]|0[1-9]|1[012])\b|janvier|jan|février|fevrier|fév|fev|mars|avril|avr|mai|juin|juillet|juil|aout|août|septembre|sep|sept|octobre|oct|novembre|nov|décembre|decembre|déc|dec)(\/|\.)(\d{2})$
+d3_mmyyyy;3;1;;^(\b([1-9]|0[1-9]|1[012])\b|janvier|jan|février|fevrier|fév|fev|mars|avril|avr|mai|juin|juillet|juil|aout|août|septembre|sep|sept|octobre|oct|novembre|nov|décembre|decembre|déc|dec)(\/|\.)(\d{2})$
+d4_ddmmyyyy;6;3;1;^(\d{1,2})(\/|\.)(\b([1-9]|0[1-9]|1[012])\b|janvier|jan|février|fevrier|fév|fev|mars|avril|avr|mai|juin|juillet|juil|aout|août|septembre|sep|sept|octobre|oct|novembre|nov|décembre|decembre|déc|dec)(\/|\.)(\d{4})$
+d5_ddmmyyyy;3;2;1;^(\d{1,2}) (\b|janvier|jan|février|fevrier|fév|fev|mars|avril|avr|mai|juin|juillet|juil|aout|août|septembre|sep|sept|octobre|oct|novembre|nov|décembre|decembre|déc|dec) (\d{4})$
