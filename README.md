@@ -5,7 +5,9 @@ Py-Rex is a Python based regular expression extractor and so much more!
 List of files requiered for running Py-Rex : 
   - transfert_CRdataToJson.py (main.py)
   - prepare_sql.py
+
    config_recist repository with :
+ 
     - db_config
     - formatDate.txt
     - formatFile.txt
@@ -15,8 +17,11 @@ List of files requiered for running Py-Rex :
     - param_config
     - request.sql
     - var_rules.txt
+ 
    data repository with the document
+ 
    Script repository with : 
+ 
     - correct_merge_response.py
     - data_comparison.py
     - dateFormat.py
