@@ -1,2 +1,2 @@
 # Py-Rex
-Python based regex extractor and so much more
+Python based regular expression extractor and so much more!
