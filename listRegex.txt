@@ -1,0 +1,272 @@
+name;group;restriction;cible;regex
+#-------------------------------------------GENERIC------------------------------------------------------------------;;;;
+RECIST;GENERIC;;;\(?\b(cr|pr|sd|pd|na|rp|ms|mp)\b\??\)?
+RECIST_TUMOR;GENERIC;;;\b\(?(RC|CR|PR|SD|PD|NA|RP|MS|MP)\??\)?\b
+RECIST_TOTAL;GENERIC;;;\b\(?(rc|cr|pr|sd|pd|na|rp|ms|mp) ?\??\)?[-\/\ ,\+]+\(?(cr|pr|sd|pd|na|rp|ms|mp) ?\??\)?[-\/\ ,\+]+(non|no|yes|n\+|n\d|n|oui)\b ?\??
+RECIST_TOTAL2;GENERIC;i;;\(?(cr|rc|pr|rp|sd|pd|na|ms|mp|rd|0\b|Non(\-|\s*)?(cr|rc)(\s*|\/)pd)\s?\??\)?([-\/ ,+]|et)*(\(?(Non(\-| *)?(cr|rc)( *|\/)non(\-| *)?pd|cr|rc|pr|rp|sd|pd|na|ms|mp|non|no\b|yes|n\+|n\d|n\b|oui|o\b|\?)+\s?\??\)?([-\/ ,+]|et)+){1,5}(non|no\b|yes|oui|o\b|n\+|n\b|\?)\??\)?
+DATE;GENERIC;;;(([1-9]|0[1-9]|[12][0-9]|3[01])(-| |\/|\.))?(([1-9]|0[1-9]|1[012])|janvier|jan|février|fevrier|fév|fev|mars|avril|avr|mai|juin|juillet|juil|aout|août|septembre|sep|sept|octobre|oct|novembre|nov|décembre|decembre|déc|dec)\.?(-| |\/|\.)((19|20)?\d\d)
+#-------------------------------------------HEADER------------------------------------------------------------------;;;;
+EXAMID;HEADER;;1;N. examen : (\d+)
+EXAMDT;HEADER;i;2;(Date *d’examen|Réalisé le|fait le|Report Date) *:? *($DATE$)
+#-----------------------------------------INDICATION-----------------------------------------------------------------;;;;
+SCAN_NEW_REF;INDICATION;i;1;(Cet?\s*(scanner|examen|TDM))\s*(devient|servira|fait|fera|pourra\s*servir)\s*(de\s*)?(le\snouveau\s*)?(la\snouvelle\s*)?(r[ée]f[ée]rence|Baseline|Nadir)
+SCAN_NEW_REF_TYPE;INDICATION;i;7;(Cet?\s*(scanner|examen|TDM))\s*(devient|servira|fait|fera|pourra\s*servir)\s*(de\s*)?(le\snouveau\s*)?(la\snouvelle\s*)?(r[ée]f[ée]rence|Baseline|Nadir)
+BASELINE_REF_DT;INDICATION;i;6;(baseline)\s*(\(scanner\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\)?($DATE$)
+BASELINE_REF_DT_2;INDICATION;i;1;($DATE$)\s*\(\s*(Baseline)\s*\)?
+BASELINE_REF_DT_3;INDICATION;i;6;(par\s*rapport|en\s*comparaison|compar[ée])\s*([ad]u\s*scanner|[aà]\s*celui)\s*(baseline)\s*(initial\s*|basal\s*|r[ée]alis[ée]\s*)?(le|du|d'|en)\s*($DATE$)
+BASELINE_REF_DT_4;INDICATION;i;11;(examen|scanner)\s*(est\s*)?(comparé|confront[ée])\s*(au|a|à)\s*(la\s*)?(scanner|TDM|TEP|celui)?\s*(baseline)\s*(pr[ée]c[ée]dent\s*)?(r[ée]alis[ée]\s*)?(du|de|d'|en)\s*($DATE$)
+BASELINE_REF_DT_5;INDICATION;i;5;(scanners?|examen)\s*(pris\s*comme\s*)?(baseline).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+BASELINE_REF_DT_6;INDICATION;i;5;par\s*rapport\s*(aux|au|à|a)\s*(images\s*de\s*la\s*TEP\s*|la\s*somme\s*|scanner\s*)?(baseline)\s*(de\s*)?($DATE$)
+BASELINE_REF_TYPE;INDICATION;i;1;(baseline)\s*(\(scanner\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\)?($DATE$)
+BASELINE_REF_TYPE_2;INDICATION;i;10;($DATE$)\s*\(\s*(Baseline)\s*\)?
+BASELINE_REF_TYPE_3;INDICATION;i;3;(par\s*rapport|en\s*comparaison|compar[ée])\s*([ad]u\s*scanner|[aà]\s*celui)\s*(baseline)\s*(initial\s*|basal\s*|r[ée]alis[ée]\s*)?(le|du|d'|en)\s*($DATE$)
+BASELINE_REF_TYPE_4;INDICATION;i;7;(examen|scanner)\s*(est\s*)?(comparé|confront[ée])\s*(au|a|à)\s*(la\s*)?(scanner|TDM|TEP|celui)?\s*(baseline)\s*(pr[ée]c[ée]dent\s*)?(r[ée]alis[ée]\s*)?(du|de|d'|en)\s*($DATE$)
+BASELINE_REF_TYPE_5;INDICATION;i;3;(scanners?|examen)\s*(pris\s*comme\s*)?(baseline).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+BASELINE_REF_TYPE_6;INDICATION;i;3;par\s*rapport\s*(aux|au|à|a)\s*(images\s*de\s*la\s*TEP\s*|la\s*somme\s*|scanner\s*)?(baseline)\s*(de\s*)?($DATE$)
+NADIR_REF_DT;INDICATION;i;6;(nadir)\s*(\(?scanner\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\(?($DATE$)
+NADIR_REF_DT_2;INDICATION;i;1;($DATE$)\s*\(\s*(Nadir)\s*\)?
+NADIR_REF_DT_3;INDICATION;i;5;(scanners?|examen)\s*(pris\s*comme\s*)?(nadir).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+NADIR_REF_DT_4;INDICATION;i;5;par\s*rapport\s*(aux|au|à|a)\s*(images\s*de\s*la\s*TEP\s*|la\s*somme\s*|scanner\s*)?(nadir)\s*(de\s*)?($DATE$)
+NADIR_REF_TYPE;INDICATION;i;1;(nadir)\s*(\(?scanner\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\(?($DATE$)
+NADIR_REF_TYPE_2;INDICATION;i;10;($DATE$)\s*\(\s*(Nadir)\s*\)?
+NADIR_REF_TYPE_3;INDICATION;i;3;(scanners?|examen)\s*(pris\s*comme\s*)?(nadir).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+NADIR_REF_TYPE_4;INDICATION;i;3;par\s*rapport\s*(aux|au|à|a)\s*(images\s*de\s*la\s*TEP\s*|la\s*somme\s*|scanner\s*)?(nadir)\s*(de\s*)?($DATE$)
+PRE_TRAIT_REF_DT;INDICATION;i;8;(pr[ée](\s|-)?traitement|pr[ée](\s|-)?th[ée]rapeutique)\s*(\(scanner\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\)?($DATE$)
+PRE_TRAIT_REF_DT_2;INDICATION;i;3;(scanner pr[ée](\s|-)traitement) +le +($DATE$)
+PRE_TRAIT_REF_DT_3;INDICATION;i;1;($DATE$)\s*\(\s*(pr[ée](\s|-)?traitement|pr[ée](\s|-)?th[ée]rapeutique)\s*\)?
+PRE_TRAIT_REF_DT_4;INDICATION;i;11;(comparaison|comparativement)\s*(demand[ée][ée]\s*)?(au|avec|du|à|a)\s*(le|l'|la)?\s*(pr[ée]c[ée]dente\s*)?(examen|scanner|TEP\s*TDM|TEP|TDM)?\s*(pr[ée](\s|-)th[ée]rapeutique|pr[ée](\s|-)traitement)\s*(du\s*)?($DATE$)
+PRE_TRAIT_REF_DT_5;INDICATION;i;7;(scanners?|examen)\s*(pris\s*comme\s*)?(pr[ée](\s|-)traite?ment|pr[ée](\s|-)th[ée]rapeutique).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+PRE_TRAIT_REF_TYPE;INDICATION;i;1;(pr[ée](\s|-)?traitement|pr[ée](\s|-)?th[ée]rapeutique)\s*(\(scanner\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\)?($DATE$)
+PRE_TRAIT_REF_TYPE_2;INDICATION;i;1;(scanner pr[ée](\s|-)traitement) +le +($DATE$)
+PRE_TRAIT_REF_TYPE_3;INDICATION;i;10;($DATE$)\s*\(\s*(pr[ée](\s|-)?traitement|pr[ée](\s|-)?th[ée]rapeutique)\s*\)?
+PRE_TRAIT_REF_TYPE_4;INDICATION;i;6;(comparaison|comparativement)\s*(demand[ée][ée]\s*)?(au|avec|du|à|a)\s*(le|l'|la)?\s*(pr[ée]c[ée]dente\s*)?(examen|scanner|TEP\s*TDM|TEP|TDM)?\s*(pr[ée](\s|-)th[ée]rapeutique|pr[ée](\s|-)traitement)\s*(du\s*)?($DATE$)
+PRE_TRAIT_REF_TYPE_5;INDICATION;i;3;(scanners?|examen)\s*(pris\s*comme\s*)?(pr[ée](\s|-)traite?ment|pr[ée](\s|-)th[ée]rapeutique).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+C1_REF_DT;INDICATION;i;7;(C1\s*J1|C1)\s*(\(scanner\s*)?(\b[a-z]+\b\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\)?($DATE$)
+C1_REF_TYPE;INDICATION;i;1;(C1\s*J1|C1)\s*(\(scanner\s*)?(\b[a-z]+\b\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\)?($DATE$)
+SCAN_REF_DT_1;INDICATION;i;7;(r[ée]f[ée]rence|r[ée]f[ée]rent)\s*(le\s*)?(du\s*)?(de\s*)?(en\s*)?(est\scelui\s*du\s*)?:?=?\s*($DATE$)
+SCAN_REF_DT_2;INDICATION;i;2;(TDM.{0,100}r[ée]f[ée]rence|scanner.{0,100}r[ée]f[ée]rence) +le +($DATE$)
+SCAN_REF_DT_4;INDICATION;i;5;(par\s*rapport|en\s*comparaison|compar[ée])\s*([ad]u\s*scanner|[aà]\s*celui)\s*(initial\s*|basal\s*|r[ée]alis[ée]\s*)?(le|du|d'|en)\s*($DATE$)
+SCAN_REF_DT_5;INDICATION;i;10;(examen|scanner)\s*(est\s*)?(comparé|confront[ée])\s*(au|a|à)\s*(la\s*)?(scanner|TDM|TEP|celui)?\s*(pr[ée]c[ée]dent\s*)?(r[ée]alis[ée]\s*)?(du|de|d'|en)\s*($DATE$)
+SCAN_REF_DT_6;INDICATION;i;8;(comparaison|comparativement)\s*(demand[ée][ée]\s*)?(au|avec|du|à|a)\s*(le|l'|la)?\s*(pr[ée]c[ée]dente\s*)?(examen|scanner|TEP\s*TDM|TEP|TDM)?\s*(du\s*)?($DATE$)
+SCAN_REF_DT_7;INDICATION;i;5;(scanners?|examen)\s*(pris\s*comme\s*)?(r[ée]f[ée]rence|de\s*r[ée]f[ée]rence).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+SCAN_REF_DT_8;INDICATION;i;4;par\s*rapport\s*(aux|au|à|a)\s*(images\s*de\s*la\s*TEP\s*|la\s*somme\s*|scanner\s*)?(de\s*)?($DATE$)
+SCAN_REF_DT_OLD;INDICATION;i;4;(scanner|[ée]xamen) *d?e? *(traitement|r[ée]f[ée]rence)( |[a-zA-Z])*($DATE$)
+SCAN_REF_TYPE_1;INDICATION;i;1;(r[ée]f[ée]rence|r[ée]f[ée]rent)\s*(le\s*)?(du\s*)?(de\s*)?(en\s*)?(est\scelui\s*du\s*)?:?=?\s*($DATE$)
+SCAN_REF_TYPE_2;INDICATION;i;1;(TDM.{0,100}r[ée]f[ée]rence|scanner.{0,100}r[ée]f[ée]rence) +le +($DATE$)
+SCAN_REF_TYPE_4;INDICATION;i;2;(par\s*rapport|en\s*comparaison|compar[ée])\s*([ad]u\s*scanner|[aà]\s*celui)\s*(initial\s*|basal\s*|r[ée]alis[ée]\s*)?(le|du|d'|en)\s*($DATE$)
+SCAN_REF_TYPE_5;INDICATION;i;6;(examen|scanner)\s*(est\s*)?(comparé|confront[ée])\s*(au|a|à)\s*(la\s*)?(scanner|TDM|TEP|celui)?\s*(pr[ée]c[ée]dent\s*)?(r[ée]alis[ée]\s*)?(du|de|d'|en)\s*($DATE$)
+SCAN_REF_TYPE_6;INDICATION;i;6;(comparaison|comparativement)\s*(demand[ée][ée]\s*)?(au|avec|du|à|a)\s*(le|l'|la)?\s*(pr[ée]c[ée]dente\s*)?(examen|scanner|TEP\s*TDM|TEP|TDM)?\s*(du\s*)?($DATE$)
+SCAN_REF_TYPE_7;INDICATION;i;3;(scanners?|examen)\s*(pris\s*comme\s*)?(r[ée]f[ée]rence|de\s*r[ée]f[ée]rence).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+SCAN_REF_TYPE_8;INDICATION;i;2;par\s*rapport\s*(aux|au|à|a)\s*(images\s*de\s*la\s*TEP\s*|la\s*somme\s*|scanner\s*)?(de\s*)?($DATE$)
+SCAN_REF_TYPE_OLD;INDICATION;i;2;(scanner|[ée]xamen) *d?e? *(traitement|r[ée]f[ée]rence)( |[a-zA-Z])*($DATE$)
+TARGET_SUM_VERSUS_3;INDICATION;i;18;((pr[ée](\s|-)traitement)|(baseline)|(nadir))\s*(le|du)\s*($DATE$)\s*(:\s*)?(:\s*somme\s*des\s*l[eé]sions?\s*(en\s*)?cibles?\s*=\s*)?\(?((\d{1,3})\s*(mm))\)?
+TARGET_SUM_VERSUS_4;INDICATION;i;7;((pr[ée](\s|-)traitement)|(baseline)|(nadir))\s*\(?(somme)?\s*=?\s*((\d{1,3})\s*(mm))
+TARGET_SUM_VERSUS_5;INDICATION;i;7;((\d{1,3})\s*(mm)?),?\s*((versus)|(vs))\s*((\d{1,3})(\s*mm)?)
+TARGET_SUM_VERSUS_6;INDICATION;i;18;((r[ée]f[ée]rence)|(baseline)|(TDM initial)|(TDM\s*baseline)|(TDM\s*TAP)|(pr[ée](\s|-)traite?ment)|(nadir)|()TEP).{0,100}?somme\s*(des\s*plus\sgrandes?\s*longueurs?\s*)?(des\s*plus\s*grands?\s*axes?\s*)?des\s*l[eé]sions?\s*(cibles?)?\s*(d[ée]finies?\s*.\s*posteriori)?([ée]tait\s*[ée]gale\s*.)?(\s*(:|=|à|de)\s*)?\s*((\d{1,3})\s*(mm))
+TARGET_SUM_VERSUS_7;INDICATION;i;10;((pr[ée](\s|-)traitement)|(baseline)|(nadir)|(référence)|(initial)|()pr[ée](\s|-)sutent).{0,100}\s*\(?(somme)?\s*=?\s*((\d{1,3})\s*(mm))
+#-------------------------------------------TECHNIQUE--------------------------------------------------------------;;;;
+SCAN_NEW_REF;TECHNIQUE;i;1;(Cet?\s*(scanner|examen|TDM))\s*(devient|servira|fait|fera|pourra\s*servir)\s*(de\s*)?(le\snouveau\s*)?(la\snouvelle\s*)?(r[ée]f[ée]rence|Baseline|Nadir)
+SCAN_NEW_REF_TYPE;TECHNIQUE;i;7;(Cet?\s*(scanner|examen|TDM))\s*(devient|servira|fait|fera|pourra\s*servir)\s*(de\s*)?(le\snouveau\s*)?(la\snouvelle\s*)?(r[ée]f[ée]rence|Baseline|Nadir)
+BASELINE_REF_DT;TECHNIQUE;i;6;(baseline)\s*(\(scanner\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\)?($DATE$)
+BASELINE_REF_DT_2;TECHNIQUE;i;1;($DATE$)\s*\(\s*(Baseline)\s*\)
+BASELINE_REF_DT_3;TECHNIQUE;i;6;(par\s*rapport|en\s*comparaison|compar[ée])\s*([ad]u\s*scanner|[aà]\s*celui)\s*(baseline)\s*(initial\s*|basal\s*|r[ée]alis[ée]\s*)?(le|du|d'|en)\s*($DATE$)
+BASELINE_REF_DT_4;TECHNIQUE;i;11;(examen|scanner)\s*(est\s*)?(comparé|confront[ée])\s*(au|a|à)\s*(la\s*)?(scanner|TDM|TEP|celui)?\s*(baseline)\s*(pr[ée]c[ée]dent\s*)?(r[ée]alis[ée]\s*)?(du|de|d'|en)\s*($DATE$)
+BASELINE_REF_DT_5;TECHNIQUE;i;5;(scanners?|examen)\s*(pris\s*comme\s*)?(baseline).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+BASELINE_REF_DT_6;TECHNIQUE;i;5;par\s*rapport\s*(aux|au|à|a)\s*(images\s*de\s*la\s*TEP\s*|la\s*somme\s*|scanner\s*)?(baseline)\s*(de\s*)?($DATE$)
+BASELINE_REF_TYPE;TECHNIQUE;i;1;(baseline)\s*(\(scanner\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\)?($DATE$)
+BASELINE_REF_TYPE_2;TECHNIQUE;i;10;($DATE$)\s*\(\s*(Baseline)\s*\)?
+BASELINE_REF_TYPE_3;TECHNIQUE;i;3;(par\s*rapport|en\s*comparaison|compar[ée])\s*([ad]u\s*scanner|[aà]\s*celui)\s*(baseline)\s*(initial\s*|basal\s*|r[ée]alis[ée]\s*)?(le|du|d'|en)\s*($DATE$)
+BASELINE_REF_TYPE_4;TECHNIQUE;i;7;(examen|scanner)\s*(est\s*)?(comparé|confront[ée])\s*(au|a|à)\s*(la\s*)?(scanner|TDM|TEP|celui)?\s*(baseline)\s*(pr[ée]c[ée]dent\s*)?(r[ée]alis[ée]\s*)?(du|de|d'|en)\s*($DATE$)
+BASELINE_REF_TYPE_5;TECHNIQUE;i;3;(scanners?|examen)\s*(pris\s*comme\s*)?(baseline).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+BASELINE_REF_TYPE_6;TECHNIQUE;i;3;par\s*rapport\s*(aux|au|à|a)\s*(images\s*de\s*la\s*TEP\s*|la\s*somme\s*|scanner\s*)?(baseline)\s*(de\s*)?($DATE$)
+NADIR_REF_DT;TECHNIQUE;i;6;(nadir)\s*(\(?scanner\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\(?($DATE$)
+NADIR_REF_DT_2;TECHNIQUE;i;1;($DATE$)\s*\(\s*(Nadir)\s*\)?
+NADIR_REF_DT_3;TECHNIQUE;i;5;(scanners?|examen)\s*(pris\s*comme\s*)?(nadir).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+NADIR_REF_DT_4;TECHNIQUE;i;5;par\s*rapport\s*(aux|au|à|a)\s*(images\s*de\s*la\s*TEP\s*|la\s*somme\s*|scanner\s*)?(nadir)\s*(de\s*)?($DATE$)
+NADIR_REF_TYPE;TECHNIQUE;i;1;(nadir)\s*(\(?scanner\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\(?($DATE$)
+NADIR_REF_TYPE_2;TECHNIQUE;i;10;($DATE$)\s*\(\s*(Nadir)\s*\)?
+NADIR_REF_TYPE_3;TECHNIQUE;i;3;(scanners?|examen)\s*(pris\s*comme\s*)?(nadir).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+NADIR_REF_TYPE_4;TECHNIQUE;i;3;par\s*rapport\s*(aux|au|à|a)\s*(images\s*de\s*la\s*TEP\s*|la\s*somme\s*|scanner\s*)?(nadir)\s*(de\s*)?($DATE$)
+PRE_TRAIT_REF_DT;TECHNIQUE;i;8;(pr[ée](\s|-)?traitement|pr[ée](\s|-)?th[ée]rapeutique)\s*(\(scanner\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\)?($DATE$)
+PRE_TRAIT_REF_DT_2;TECHNIQUE;i;3;(scanner pr[ée](\s|-)traitement) +le +($DATE$)
+PRE_TRAIT_REF_DT_3;TECHNIQUE;i;1;($DATE$)\s*\(\s*(pr[ée](\s|-)?traitement|pr[ée](\s|-)?th[ée]rapeutique)\s*\)?
+PRE_TRAIT_REF_DT_4;TECHNIQUE;i;11;(comparaison|comparativement)\s*(demand[ée][ée]\s*)?(au|avec|du|à|a)\s*(le|l'|la)?\s*(pr[ée]c[ée]dente\s*)?(examen|scanner|TEP\s*TDM|TEP|TDM)?\s*(pr[ée](\s|-)th[ée]rapeutique|pr[ée](\s|-)traitement)\s*(du\s*)?($DATE$)
+PRE_TRAIT_REF_DT_5;TECHNIQUE;i;7;(scanners?|examen)\s*(pris\s*comme\s*)?(pr[ée](\s|-)traite?ment|pr[ée](\s|-)th[ée]rapeutique).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+PRE_TRAIT_REF_TYPE;TECHNIQUE;i;1;(pr[ée](\s|-)?traitement|pr[ée](\s|-)?th[ée]rapeutique)\s*(\(scanner\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\)?($DATE$)
+PRE_TRAIT_REF_TYPE_2;TECHNIQUE;i;1;(scanner pr[ée](\s|-)traitement) +le +($DATE$)
+PRE_TRAIT_REF_TYPE_3;TECHNIQUE;i;10;($DATE$)\s*\(\s*(pr[ée](\s|-)?traitement|pr[ée](\s|-)?th[ée]rapeutique)\s*\)?
+PRE_TRAIT_REF_TYPE_4;TECHNIQUE;i;6;(comparaison|comparativement)\s*(demand[ée][ée]\s*)?(au|avec|du|à|a)\s*(le|l'|la)?\s*(pr[ée]c[ée]dente\s*)?(examen|scanner|TEP\s*TDM|TEP|TDM)?\s*(pr[ée](\s|-)th[ée]rapeutique|pr[ée](\s|-)traitement)\s*(du\s*)?($DATE$)
+PRE_TRAIT_REF_TYPE_5;TECHNIQUE;i;3;(scanners?|examen)\s*(pris\s*comme\s*)?(pr[ée](\s|-)traite?ment|pr[ée](\s|-)th[ée]rapeutique).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+C1_REF_DT;TECHNIQUE;i;7;(C1\s*J1|C1)\s*(\(scanner\s*)?(\b[a-z]+\b\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\)?($DATE$)
+C1_REF_TYPE;TECHNIQUE;i;1;(C1\s*J1|C1)\s*(\(scanner\s*)?(\b[a-z]+\b\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\)?($DATE$)
+SCAN_REF_DT_1;TECHNIQUE;i;7;(r[ée]f[ée]rence|r[ée]f[ée]rent)\s*(le\s*)?(du\s*)?(de\s*)?(en\s*)?(est\scelui\s*du\s*)?:?=?\s*($DATE$)
+SCAN_REF_DT_2;TECHNIQUE;i;2;(TDM.{0,100}r[ée]f[ée]rence|scanner.{0,100}r[ée]f[ée]rence) +le +($DATE$)
+SCAN_REF_DT_4;TECHNIQUE;i;5;(par\s*rapport|en\s*comparaison|compar[ée])\s*([ad]u\s*scanner|[aà]\s*celui)\s*(initial\s*|basal\s*|r[ée]alis[ée]\s*)?(le|du|d'|en)\s*($DATE$)
+SCAN_REF_DT_5;TECHNIQUE;i;10;(examen|scanner)\s*(est\s*)?(comparé|confront[ée])\s*(au|a|à)\s*(la\s*)?(scanner|TDM|TEP|celui)?\s*(pr[ée]c[ée]dent\s*)?(r[ée]alis[ée]\s*)?(du|de|d'|en)\s*($DATE$)
+SCAN_REF_DT_6;TECHNIQUE;i;8;(comparaison|comparativement)\s*(demand[ée][ée]\s*)?(au|avec|du|à|a)\s*(le|l'|la)?\s*(pr[ée]c[ée]dente\s*)?(examen|scanner|TEP\s*TDM|TEP|TDM)?\s*(du\s*)?($DATE$)
+SCAN_REF_DT_7;TECHNIQUE;i;5;(scanners?|examen)\s*(pris\s*comme\s*)?(r[ée]f[ée]rence|de\s*r[ée]f[ée]rence).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+SCAN_REF_DT_8;TECHNIQUE;i;4;par\s*rapport\s*(aux|au|à|a)\s*(images\s*de\s*la\s*TEP\s*|la\s*somme\s*|scanner\s*)?(de\s*)?($DATE$)
+SCAN_REF_DT_OLD;TECHNIQUE;i;4;(scanner|[ée]xamen) *d?e? *(traitement|r[ée]f[ée]rence)( |[a-zA-Z])*($DATE$)
+SCAN_REF_TYPE_1;TECHNIQUE;i;1;(r[ée]f[ée]rence|r[ée]f[ée]rent)\s*(le\s*)?(du\s*)?(de\s*)?(en\s*)?(est\scelui\s*du\s*)?:?=?\s*($DATE$)
+SCAN_REF_TYPE_2;TECHNIQUE;i;1;(TDM.{0,100}r[ée]f[ée]rence|scanner.{0,100}r[ée]f[ée]rence) +le +($DATE$)
+SCAN_REF_TYPE_4;TECHNIQUE;i;2;(par\s*rapport|en\s*comparaison|compar[ée])\s*([ad]u\s*scanner|[aà]\s*celui)\s*(initial\s*|basal\s*|r[ée]alis[ée]\s*)?(le|du|d'|en)\s*($DATE$)
+SCAN_REF_TYPE_5;TECHNIQUE;i;6;(examen|scanner)\s*(est\s*)?(comparé|confront[ée])\s*(au|a|à)\s*(la\s*)?(scanner|TDM|TEP|celui)?\s*(pr[ée]c[ée]dent\s*)?(r[ée]alis[ée]\s*)?(du|de|d'|en)\s*($DATE$)
+SCAN_REF_TYPE_6;TECHNIQUE;i;6;(comparaison|comparativement)\s*(demand[ée][ée]\s*)?(au|avec|du|à|a)\s*(le|l'|la)?\s*(pr[ée]c[ée]dente\s*)?(examen|scanner|TEP\s*TDM|TEP|TDM)?\s*(du\s*)?($DATE$)
+SCAN_REF_TYPE_7;TECHNIQUE;i;3;(scanners?|examen)\s*(pris\s*comme\s*)?(r[ée]f[ée]rence|de\s*r[ée]f[ée]rence).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+SCAN_REF_TYPE_8;TECHNIQUE;i;2;par\s*rapport\s*(aux|au|à|a)\s*(images\s*de\s*la\s*TEP\s*|la\s*somme\s*|scanner\s*)?(de\s*)?($DATE$)
+SCAN_REF_TYPE_OLD;TECHNIQUE;i;2;(scanner|[ée]xamen) *d?e? *(traitement|r[ée]f[ée]rence)( |[a-zA-Z])*($DATE$)
+TARGET_SUM_VERSUS_3;TECHNIQUE;i;18;((pr[ée](\s|-)traitement)|(baseline)|(nadir))\s*(le|du)\s*($DATE$)\s*(:\s*)?(:\s*somme\s*des\s*l[eé]sions?\s*(en\s*)?cibles?\s*=\s*)?\(?((\d{1,3})\s*(mm))\)?
+TARGET_SUM_VERSUS_4;TECHNIQUE;i;7;((pr[ée](\s|-)traitement)|(baseline)|(nadir))\s*\(?(somme)?\s*=?\s*((\d{1,3})\s*(mm))
+TARGET_SUM_VERSUS_5;TECHNIQUE;i;7;((\d{1,3})\s*(mm)?),?\s*((versus)|(vs))\s*((\d{1,3})(\s*mm)?)
+TARGET_SUM_VERSUS_6;TECHNIQUE;i;18;((r[ée]f[ée]rence)|(baseline)|(TDM initial)|(TDM\s*baseline)|(TDM\s*TAP)|(pr[ée](\s|-)traite?ment)|(nadir)|()TEP).{0,100}?somme\s*(des\s*plus\sgrandes?\s*longueurs?\s*)?(des\s*plus\s*grands?\s*axes?\s*)?des\s*l[eé]sions?\s*(cibles?)?\s*(d[ée]finies?\s*.\s*posteriori)?([ée]tait\s*[ée]gale\s*.)?(\s*(:|=|à|de)\s*)?\s*((\d{1,3})\s*(mm))
+TARGET_SUM_VERSUS_7;TECHNIQUE;i;10;((pr[ée](\s|-)traitement)|(baseline)|(nadir)|(référence)|(initial)|()pr[ée](\s|-)sutent).{0,100}\s*\(?(somme)?\s*=?\s*((\d{1,3})\s*(mm))
+#-----------------------------------------LESIONS_CIBLES------------------------------------------------------------;;;;
+LOCALISATION_OS;LESIONS_CIBLES;i;;(osseuse|osseux?|\bos\b)
+LOCALISATION_GANGLION;LESIONS_CIBLES;i;;(ganglionnaires?|ganglions?)
+LOCALISATION_AUTRE;LESIONS_CIBLES;i+m;;rein|r[eé]nale?|ovai?ri?en?|prostate?|vessie|col(on|ique)|verge|poumon|pulmonaire|intestin|coeur|foie
+#----------------------------------------LESIONS_NON_CIBLES---------------------------------------------------------;;;;
+LOCALISATION_OS;LESIONS_NON_CIBLES;i;;(osseuse|osseux?|\bos\b)
+LOCALISATION_GANGLION;LESIONS_CIBLES;i;;(ganglionnaires?|ganglions?)
+LOCALISATION_AUTRE;LESIONS_CIBLES;i+m;;rein|r[eé]nale?|ovai?ri?en?|prostate?|vessie|col(on|ique)|verge|poumon|pulmonaire|intestin|coeur|foie
+#--------------------------------------------CONCLUSION--------------------------------------------------------------;;;;
+SCAN_NEW_REF;CONCLUSION;i;1;(Cet?\s*(scanner|examen|TDM))\s*(devient|servira|fait|fera|pourra\s*servir)\s*(de\s*)?(le\snouveau\s*)?(la\snouvelle\s*)?(r[ée]f[ée]rence|Baseline|Nadir)
+SCAN_NEW_REF_TYPE;CONCLUSION;i;7;(Cet?\s*(scanner|examen|TDM))\s*(devient|servira|fait|fera|pourra\s*servir)\s*(de\s*)?(le\snouveau\s*)?(la\snouvelle\s*)?(r[ée]f[ée]rence|Baseline|Nadir)
+BASELINE_REF_DT;CONCLUSION;i;6;(baseline)\s*(\(scanner\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\)?($DATE$)
+BASELINE_REF_DT_2;CONCLUSION;i;1;($DATE$)\s*\(\s*(Baseline)\s*\)
+BASELINE_REF_DT_3;CONCLUSION;i;6;(par\s*rapport|en\s*comparaison|compar[ée])\s*([ad]u\s*scanner|[aà]\s*celui)\s*(baseline)\s*(initial\s*|basal\s*|r[ée]alis[ée]\s*)?(le|du|d'|en)\s*($DATE$)
+BASELINE_REF_DT_4;CONCLUSION;i;11;(examen|scanner)\s*(est\s*)?(comparé|confront[ée])\s*(au|a|à)\s*(la\s*)?(scanner|TDM|TEP|celui)?\s*(baseline)\s*(pr[ée]c[ée]dent\s*)?(r[ée]alis[ée]\s*)?(du|de|d'|en)\s*($DATE$)
+BASELINE_REF_DT_5;CONCLUSION;i;5;(scanners?|examen)\s*(pris\s*comme\s*)?(baseline).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+BASELINE_REF_DT_6;CONCLUSION;i;5;par\s*rapport\s*(aux|au|à|a)\s*(images\s*de\s*la\s*TEP\s*|la\s*somme\s*|scanner\s*)?(baseline)\s*(de\s*)?($DATE$)
+BASELINE_REF_TYPE;CONCLUSION;i;1;(baseline)\s*(\(scanner\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\)?($DATE$)
+BASELINE_REF_TYPE_2;CONCLUSION;i;10;($DATE$)\s*\(\s*(Baseline)\s*\)?
+BASELINE_REF_TYPE_3;CONCLUSION;i;3;(par\s*rapport|en\s*comparaison|compar[ée])\s*([ad]u\s*scanner|[aà]\s*celui)\s*(baseline)\s*(initial\s*|basal\s*|r[ée]alis[ée]\s*)?(le|du|d'|en)\s*($DATE$)
+BASELINE_REF_TYPE_4;CONCLUSION;i;7;(examen|scanner)\s*(est\s*)?(comparé|confront[ée])\s*(au|a|à)\s*(la\s*)?(scanner|TDM|TEP|celui)?\s*(baseline)\s*(pr[ée]c[ée]dent\s*)?(r[ée]alis[ée]\s*)?(du|de|d'|en)\s*($DATE$)
+BASELINE_REF_TYPE_5;CONCLUSION;i;3;(scanners?|examen)\s*(pris\s*comme\s*)?(baseline).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+BASELINE_REF_TYPE_6;CONCLUSION;i;3;par\s*rapport\s*(aux|au|à|a)\s*(images\s*de\s*la\s*TEP\s*|la\s*somme\s*|scanner\s*)?(baseline)\s*(de\s*)?($DATE$)
+NADIR_REF_DT;CONCLUSION;i;6;(nadir)\s*(\(?scanner\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\(?($DATE$)
+NADIR_REF_DT_2;CONCLUSION;i;1;($DATE$)\s*\(\s*(Nadir)\s*\)?
+NADIR_REF_DT_3;CONCLUSION;i;5;(scanners?|examen)\s*(pris\s*comme\s*)?(nadir).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+NADIR_REF_DT_4;CONCLUSION;i;5;par\s*rapport\s*(aux|au|à|a)\s*(images\s*de\s*la\s*TEP\s*|la\s*somme\s*|scanner\s*)?(nadir)\s*(de\s*)?($DATE$)
+NADIR_REF_TYPE;CONCLUSION;i;1;(nadir)\s*(\(?scanner\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\(?($DATE$)
+NADIR_REF_TYPE_2;CONCLUSION;i;10;($DATE$)\s*\(\s*(Nadir)\s*\)?
+NADIR_REF_TYPE_3;CONCLUSION;i;3;(scanners?|examen)\s*(pris\s*comme\s*)?(nadir).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+NADIR_REF_TYPE_4;CONCLUSION;i;3;par\s*rapport\s*(aux|au|à|a)\s*(images\s*de\s*la\s*TEP\s*|la\s*somme\s*|scanner\s*)?(nadir)\s*(de\s*)?($DATE$)
+PRE_TRAIT_REF_DT;CONCLUSION;i;8;(pr[ée](\s|-)?traitement|pr[ée](\s|-)?th[ée]rapeutique)\s*(\(scanner\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\)?($DATE$)
+PRE_TRAIT_REF_DT_2;CONCLUSION;i;3;(scanner pr[ée](\s|-)traitement) +le +($DATE$)
+PRE_TRAIT_REF_DT_3;CONCLUSION;i;1;($DATE$)\s*\(\s*(pr[ée](\s|-)?traitement|pr[ée](\s|-)?th[ée]rapeutique)\s*\)?
+PRE_TRAIT_REF_DT_4;CONCLUSION;i;11;(comparaison|comparativement)\s*(demand[ée][ée]\s*)?(au|avec|du|à|a)\s*(le|l'|la)?\s*(pr[ée]c[ée]dente\s*)?(examen|scanner|TEP\s*TDM|TEP|TDM)?\s*(pr[ée](\s|-)th[ée]rapeutique|pr[ée](\s|-)traitement)\s*(du\s*)?($DATE$)
+PRE_TRAIT_REF_DT_5;CONCLUSION;i;7;(scanners?|examen)\s*(pris\s*comme\s*)?(pr[ée](\s|-)traite?ment|pr[ée](\s|-)th[ée]rapeutique).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+PRE_TRAIT_REF_TYPE;CONCLUSION;i;1;(pr[ée](\s|-)?traitement|pr[ée](\s|-)?th[ée]rapeutique)\s*(\(scanner\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\)?($DATE$)
+PRE_TRAIT_REF_TYPE_2;CONCLUSION;i;1;(scanner pr[ée](\s|-)traitement) +le +($DATE$)
+PRE_TRAIT_REF_TYPE_3;CONCLUSION;i;10;($DATE$)\s*\(\s*(pr[ée](\s|-)?traitement|pr[ée](\s|-)?th[ée]rapeutique)\s*\)?
+PRE_TRAIT_REF_TYPE_4;CONCLUSION;i;6;(comparaison|comparativement)\s*(demand[ée][ée]\s*)?(au|avec|du|à|a)\s*(le|l'|la)?\s*(pr[ée]c[ée]dente\s*)?(examen|scanner|TEP\s*TDM|TEP|TDM)?\s*(pr[ée](\s|-)th[ée]rapeutique|pr[ée](\s|-)traitement)\s*(du\s*)?($DATE$)
+PRE_TRAIT_REF_TYPE_5;CONCLUSION;i;3;(scanners?|examen)\s*(pris\s*comme\s*)?(pr[ée](\s|-)traite?ment|pr[ée](\s|-)th[ée]rapeutique).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+C1_REF_DT;CONCLUSION;i;7;(C1\s*J1|C1)\s*(\(scanner\s*)?(\b[a-z]+\b\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\)?($DATE$)
+C1_REF_TYPE;CONCLUSION;i;1;(C1\s*J1|C1)\s*(\(scanner\s*)?(\b[a-z]+\b\s*)?(le\s*)?(du\s*)?(en\s*)?:?=?\s*\)?($DATE$)
+SCAN_REF_DT_1;CONCLUSION;i;7;(r[ée]f[ée]rence|r[ée]f[ée]rent)\s*(le\s*)?(du\s*)?(de\s*)?(en\s*)?(est\scelui\s*du\s*)?:?=?\s*($DATE$)
+SCAN_REF_DT_2;CONCLUSION;i;2;(TDM.{0,100}r[ée]f[ée]rence|scanner.{0,100}r[ée]f[ée]rence) +le +($DATE$)
+SCAN_REF_DT_4;CONCLUSION;i;5;(par\s*rapport|en\s*comparaison|compar[ée])\s*([ad]u\s*scanner|[aà]\s*celui)\s*(initial\s*|basal\s*|r[ée]alis[ée]\s*)?(le|du|d'|en)\s*($DATE$)
+SCAN_REF_DT_5;CONCLUSION;i;10;(examen|scanner)\s*(est\s*)?(comparé|confront[ée])\s*(au|a|à)\s*(la\s*)?(scanner|TDM|TEP|celui)?\s*(pr[ée]c[ée]dent\s*)?(r[ée]alis[ée]\s*)?(du|de|d'|en)\s*($DATE$)
+SCAN_REF_DT_6;CONCLUSION;i;8;(comparaison|comparativement)\s*(demand[ée][ée]\s*)?(au|avec|du|à|a)\s*(le|l'|la)?\s*(pr[ée]c[ée]dente\s*)?(examen|scanner|TEP\s*TDM|TEP|TDM)?\s*(du\s*)?($DATE$)
+SCAN_REF_DT_7;CONCLUSION;i;5;(scanners?|examen)\s*(pris\s*comme\s*)?(r[ée]f[ée]rence|de\s*r[ée]f[ée]rence).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+SCAN_REF_DT_8;CONCLUSION;i;4;par\s*rapport\s*(aux|au|à|a)\s*(images\s*de\s*la\s*TEP\s*|la\s*somme\s*|scanner\s*)?(de\s*)?($DATE$)
+SCAN_REF_DT_OLD;CONCLUSION;i;4;(scanner|[ée]xamen) *d?e? *(traitement|r[ée]f[ée]rence)( |[a-zA-Z])*($DATE$)
+SCAN_REF_TYPE_1;CONCLUSION;i;1;(r[ée]f[ée]rence|r[ée]f[ée]rent)\s*(le\s*)?(du\s*)?(de\s*)?(en\s*)?(est\scelui\s*du\s*)?:?=?\s*($DATE$)
+SCAN_REF_TYPE_2;CONCLUSION;i;1;(TDM.{0,100}r[ée]f[ée]rence|scanner.{0,100}r[ée]f[ée]rence) +le +($DATE$)
+SCAN_REF_TYPE_4;CONCLUSION;i;2;(par\s*rapport|en\s*comparaison|compar[ée])\s*([ad]u\s*scanner|[aà]\s*celui)\s*(initial\s*|basal\s*|r[ée]alis[ée]\s*)?(le|du|d'|en)\s*($DATE$)
+SCAN_REF_TYPE_5;CONCLUSION;i;6;(examen|scanner)\s*(est\s*)?(comparé|confront[ée])\s*(au|a|à)\s*(la\s*)?(scanner|TDM|TEP|celui)?\s*(pr[ée]c[ée]dent\s*)?(r[ée]alis[ée]\s*)?(du|de|d'|en)\s*($DATE$)
+SCAN_REF_TYPE_6;CONCLUSION;i;6;(comparaison|comparativement)\s*(demand[ée][ée]\s*)?(au|avec|du|à|a)\s*(le|l'|la)?\s*(pr[ée]c[ée]dente\s*)?(examen|scanner|TEP\s*TDM|TEP|TDM)?\s*(du\s*)?($DATE$)
+SCAN_REF_TYPE_7;CONCLUSION;i;3;(scanners?|examen)\s*(pris\s*comme\s*)?(r[ée]f[ée]rence|de\s*r[ée]f[ée]rence).{0,100}?(et|d'|le|du|de|en)\s*($DATE$)
+SCAN_REF_TYPE_8;CONCLUSION;i;2;par\s*rapport\s*(aux|au|à|a)\s*(images\s*de\s*la\s*TEP\s*|la\s*somme\s*|scanner\s*)?(de\s*)?($DATE$)
+SCAN_REF_TYPE_OLD;CONCLUSION;i;2;(scanner|[ée]xamen) *d?e? *(traitement|r[ée]f[ée]rence)( |[a-zA-Z])*($DATE$)
+TARGET_SUM_CALCUL;CONCLUSION;i;;(\d{1,4}[\-|\+| ]{1,3}){2,10}[ |\=]{1,3}\d{1,4} ?mm
+TARGET_SUM_PHRASE_1;CONCLUSION;i;2;somme( totale)? *des *l[eé]sions? *cibles? *[\=|\:] *((\d){1,4} *mm)
+TARGET_SUM_PHRASE_2;CONCLUSION;i;7;somme.{0,100}l[eé]sions?.{0,100}cibles?.{0,100}?((=\s?)|(:\s?)|(est\s?)|(est\sde\s?)|(est\smesur[ée]e\s.\s?)|à\s)((\d{1,4})\s{0,3}mm)
+TARGET_SUM_PHRASE_3;CONCLUSION;i;2;somme.{0,100}?(longueur|l[eé]sions).{0,100}?((\d{1,4})\s{0,3}mm)
+TARGET_SUM_PHRASE_4;CONCLUSION;i;4;(cibles?)(.{0,100}?)(de|soit|:|=|à)\s?\(?(\d{1,4}\s{0,3}mm)
+TARGET_SUM_VERSUS_1;CONCLUSION;i;2;(vs|versus|contre)\s?(\d{1,4}\s{0,3}mm)
+TARGET_SUM_VERSUS_2;CONCLUSION;i;1;=\s{0,3}\d{1,3}.{0,3}vs\s{0,3}(\d{1,3})
+TARGET_SUM_VERSUS_3;CONCLUSION;i;18;((pr[ée](\s|-)traitement)|(baseline)|(nadir))\s*(le|du)\s*($DATE$)\s*(:\s*)?(:\s*somme\s*des\s*l[eé]sions?\s*(en\s*)?cibles?\s*=\s*)?\(?((\d{1,3})\s*(mm))\)?
+TARGET_SUM_VERSUS_4;CONCLUSION;i;7;((pr[ée](\s|-)traitement)|(baseline)|(nadir))\s*\(?(somme)?\s*=?\s*((\d{1,3})\s*(mm))
+TARGET_SUM_VERSUS_5;CONCLUSION;i;7;((\d{1,3})\s*(mm)?),?\s*((versus)|(vs))\s*((\d{1,3})(\s*mm)?)
+TARGET_SUM_VERSUS_6;CONCLUSION;i;18;((r[ée]f[ée]rence)|(baseline)|(TDM initial)|(TDM\s*baseline)|(TDM\s*TAP)|(pr[ée](\s|-)traite?ment)|(nadir)|()TEP).{0,100}?somme\s*(des\s*plus\sgrandes?\s*longueurs?\s*)?(des\s*plus\s*grands?\s*axes?\s*)?des\s*l[eé]sions?\s*(cibles?)?\s*(d[ée]finies?\s*.\s*posteriori)?([ée]tait\s*[ée]gale\s*.)?(\s*(:|=|à|de)\s*)?\s*((\d{1,3})\s*(mm))
+TARGET_SUM_VERSUS_7;CONCLUSION;i;11;((pr[ée](\s|-)traitement)|(baseline)|(nadir)|(référence)|(initial)|()pr[ée](\s|-)sutent).{0,100}\s*\(?(somme)?\s*=?\s*((\d{1,3})\s*(mm))
+EVOLUTION_PCT;CONCLUSION;i;1;([+-]?\s{0,4}\d+([.,]\d+)?\s{0,4}%)
+#------------------------------------------------C1------------------------------------------------------------------;;;;
+RECIST_LESIONS-CIBLES;C1;;;$RECIST_TUMOR$
+#------------------------------------------------C2------------------------------------------------------------------;;;;
+RECIST_LESIONS-NON-CIBLES;C2;;;$RECIST_TUMOR$
+#------------------------------------------------C3------------------------------------------------------------------;;;;
+RECIST_NOUVELLES-LESIONS;C3;i;;(\bNon\b|\bNo\b|\bYes\b|\bN\+\b|\bN\d\b|\bOui\b)
+NO_NEW-LESION;C3;i;;(pas +de|aucune) +nouvelle +l[eé]sion
+NEW-LESION-CCL;CONCLUSION;i;;(pas +de|aucune) +nouvelle +l[eé]sion
+#------------------------------------------------C4------------------------------------------------------------------;;;;
+GLOBAL_CONCLUSION_DETAILLEE;C4;i;;$RECIST_TOTAL2$
+CONCLUSION_A_TRAVAILLER;C4;i;;$RECIST_TOTAL$|$RECIST_TOTAL2$
+CONCLUSION_A_TRAVAILLER;CONCLUSION;i;;$RECIST_TOTAL$|$RECIST_TOTAL2$
+GLOBAL_CONCLUSION_DETAILLEE;CONCLUSION;i;;$RECIST_TOTAL$
+GLOBAL_CONCLUSION_DETAILLEE2;CONCLUSION;i;;$RECIST_TOTAL2$
+GLOBAL_CONCLUSION_COURTE_AVEC_GLOBAL;C4;i;11;((\(?(cr|pr|sd|pd|na|ms|mp|Non(\-|\s*)?(cr|rc)(\s*|\/)non(\-|\s*)?pd|rp|non|no|yes|n\+|n\d|n|oui|\?)+\s?\??\)?([-\/\s,\+]|et)+){2,6}(non|no|yes|n\d|oui|n\+|n|\?)\??)\s*[=\s:,]?\s*(soit|=)\s*(cr|pr|sd|pd|na|rp|pr|ms|mp)
+GLOBAL_CONCLUSION_COURTE_AVEC_GLOBAL;CONCLUSION;i;11;((\(?(cr|pr|sd|pd|na|Non(\-|\s*)?(cr|rc)(\s*|\/)non(\-|\s*)?pd|rp|non|no|yes|n\+|n\d|n|oui|\?)+\s?\??\)?([-\/\s,\+]|et)+){2,6}(non|no|yes|n\d|oui|n\+|n|\?)\??)\s*[=\s:,]?\s*(soit|=)\s*(cr|pr|sd|pd|na|rp|pr|ms|mp)
+GLOBAL_CONCLUSION_SOIT;C4;i;3;(r[ée]ponse globale|soit|Au total) *(:|,)? *($RECIST$)
+GLOBAL_CONCLUSION_SOIT;CONCLUSION;i;3;(r[ée]ponse *globale|soit|Au *total) *(:|,)? *($RECIST$)
+GLOBAL_CONCLUSION_EGALE;C4;i;1;=\>? *($RECIST$)
+GLOBAL_CONCLUSION_EGALE;CONCLUSION;i;1;=\>? *($RECIST$)
+GLOBAL_CONCLUSION_COURTE;C4;i;1;Au total *:? *($RECIST$)
+GLOBAL_CONCLUSION_COURTE;CONCLUSION;i;1;Au total *:? *($RECIST$)
+#----------------------------------------------ADDENDUM---------------------------------------------------------------;;;;
+#-----------------------------------------------ANAPATH---------------------------------------------------------------;;;;
+#-------------------------------------------------ALL-----------------------------------------------------------------;;;;
+CONCLUSION_A_TRAVAILLER;ALL;i;;$RECIST_TOTAL$|$RECIST_TOTAL2$
+GLOBAL_CONCLUSION_DETAILLEE;ALL;i;;$RECIST_TOTAL$
+GLOBAL_CONCLUSION_DETAILLEE2;ALL;i;;$RECIST_TOTAL2$
+GLOBAL_CONCLUSION_SOIT;ALL;i;3;(r[ée]ponse *globale|soit|Au *total) *(:|,)? *($RECIST$)
+GLOBAL_CONCLUSION_EGALE;ALL;i;1;=\>? *($RECIST$)
+TEMPS_INJECTION;ALL;i+m;;(thoraco-abdomino-pelvienn?e?s?|thoraco-abdominale?|abdomino-pelvienn?e?s?|thoraciques?|thorax|thorax\s*l'abdomen\s*et\s*le\s*pelvis|enc[ée]phalique)\s*(au\s*)?(temps\s*)?(art[ée]riel|portal|mixte|tardif)
+TEMPS_INJECTION_2;ALL;i+m;;(\b(\w|\-)+\b)\s*au\s*temps\s*(art[ée]riel|portal|mixte|tardif)
+AGENT_DE_CONTRASTE;ALL;i+m;;(iomeron|omnipaque|xenetix|iopamiron|optiject|visipaque|ultravist)
+RECIST_1_1;ALL;i;;recist\s*1?\.?1?
+TUMOR;ALL;i;;tumeur|cancer|m[eé]tastase|m[ée]tastatique|carcinome|ad[ée]noK|chimio(th[ée]rapie)?|carcinos?e?|s[ée]minome|n[ée]oplasie|gangliome|\bTNE\b|sarcome|\bCCI\b|thymome
+REPONSE_DISSOCIEE;ALL;i;4;(r[ée]ponses?|[ée]volutions?|[ée]volutivit[ée]s?|progressions?)\s*((est|sont)\s*)?(dissoci[eé]e?s?)
+METASTATIQUE;ALL;i;;(m[ée]tasta(se|tique)s?)|(diss[ée]min[ée]e?s?)|(carcinose)|(((allure|l[ée]sion|localisation|progression)s?\s)(suspecte?s?)?.{0,30}(secondaire)s?)|(l(a|â)ch(é|e|er)\sde\sballons?)|(l[ée]sions\s(non\s)?cibles)|(rupture.{1,20}corticale)|(envahissement.{0,15}parties\smolles)|((l[i,y]se).{1,20}os)|ost[eé]ol[i,y]|rupture.{1,20}corticale|envahissement.{1,20}parties\smolles|ost[eé]ocondensa.{1,20}(suspect|secondaire|[ée]volutive)|(l[ée]sion|anomalie|image).{1,20}os.{1,30}(suspect|secondaire|[ée]volutive)|os.{1,30}(l[ée]sion|anomalie|image).{1,20}(suspect|secondaire|[ée]volutive)|(l[ée]sion|anomalie|image).{1,20}l[i,y]tique|(l[ée]sion|anomalie|image).{1,20}condensant.{1,20}(suspect|secondaire|[ée]volutive)|fracture.{1,30}(suspect|secondaire|[ée]volutive)|((l[ée]sion|anomalie|image|nodule).{1,80}(secondaire))|((l[ée]sion|anomalie|image|nodule)s.{1,40}suspec?ts?)
+TRAITEMENT;INDICATION;i+m;7;(ttt|traitement|trait[ée]e?|chimio(th[ée]rapie)?|th[ée]rapie|(premi[eéè]re|deuxi[eè]me|troisi[eéè]me|quatri[eèé]me|cinqui[éeè]me|sixi[eéè]me)\s*ligne|1[éeè]re?\s*ligne|[2-6][èée]m?e?\s*ligne|immunoth[ée]rapie)(\s*adjuvante?\s*)?(\s*par\s*)(\d\s*cycles\s*de\s*)?((\b.+?\b)(\s*[-+/]\s*\b.+?\b){0,10}(\s*(et|puis)\s*\b.+?\b)*)
+TRAITEMENT_2;INDICATION;i+m;;((\b[a-z]+\b\s*(-|et|\+|\+/-|\/)\s*){0,10}(\b[a-z]+umab)((/[a-z]+)|(\s*(-|\+|et)\s*\b[a-z]+\b))?)
+TRAITEMENT_3;INDICATION;i+m;2;\d+\s*cures?\s*(de|avant)\s*((\b.+?\b)(\s*[-+]\s*\b.+?\b){0,10}(\s*(et|puis)\s*\b.+?\b)*)
+TRAITEMENT_4;INDICATION;i+m;;pause\s*th[eèé]rapeutique
+TRAITEMENT_5;INDICATION;i+m;;chirurgie
+#----------------------------------------------ARCHIVES----------------------------------------------------------------;;;;
+#------non utilisé--------;;;;INTITULE;GENERIC;;;(Monsieur|Madame|Mme|Mr|examen|Compte[-\s]rendu de|\WN\W)
+#------non utilisé--------;;;;MILLIMESURE;GENERIC;;;[\d\.\,]+ *(mm|millim[eéè]tre)
+#------non utilisé--------;;;;TAILLE;GENERIC;;;\d+ *(mm|millim[eéè]tres?)
+#------non utilisé--------;;;;MM;GENERIC;;;(mm|millim[eéè]tres?)
+#------non utilisé--------;;;;VERSUS;GENERIC;;;\(?\d+ *(mm|millim[eéè]tres?)\)? *(vs|versus)\.? *\d+ *(mm|millim[eéè]tres?)
+#------non utilisé--------;;;;CIBLES;GENERIC;;;cibles? ?(\d){1,2}|c ?(\d){1,2}
+#------non utilisé--------;;;;RECIST_TOTALold;GENERIC;i;;(\(?(cr|pr|sd|pd|na|Non(\-| *)?(cr|rc)( *|\/)non(\-| *)?pd|rp|ms|mp|non|no|yes|n\+|n\d|n|oui|\?)+ ?\??\)?([-\/\ ,\+]|et)+){2,6}(non|no|yes|n\d|oui|n\+|n|\?)\??
+#------non utilisé--------;;;;CIBLE;GENERIC;i;;cibles?|c
+#------non utilisé--------;;;;TAILLE_PGL;INDICATION;;;$TAILLE$ +vs\.? +$TAILLE$
+#------non utilisé--------;;;;ID_Patient;INDICATION;;;(Monsieur|Madame|Mme|Mr|examen|Compte[-\s]rendu de|\WN\W)
+#------non utilisé--------;;;;NAME;INDICATION;;;(Monsieur|Madame|Mme|Mr|examen|Compte[-\s]rendu de|\WN\W)
+#------non utilisé--------;;;;LOCATION;INDICATION;i;;rein|r.nale?|ovai?ri?en?|prostat|vessie|col(on|ique)|verge|poumon|pulmonaire
+#------non utilisé--------;;;;ORGAN_LUNG;LESIONS_CIBLES;i;;POUMON
+#------non utilisé--------;;;;ORGAN_NODES;LESIONS_CIBLES;i;;GANGLION
+#------non utilisé--------;;;;ORGAN_BONE;LESIONS_CIBLES;i;;\bOS\b
+#------non utilisé--------;;;;ORGAN_PERINEE;LESIONS_CIBLES;i;;PERINEE
+#------non utilisé--------;;;;TAILLE_TUM;CONCLUSION;;;$TAILLE$ +vs\.? +$TAILLE$
+#------non utilisé--------;;;;TEST;C1;;;somme
+#------non utilisé--------;;;;TESTC2;C2;;;absence
+#------non utilisé--------;;;;CONCLUSION_LESION_NON_CIBLE;C2;;;$RECIST_TUMOR$ 
+#------non utilisé--------;;;;NO_PROGRESSION;C2;i;;absence de progression non équivoque
+#------non utilisé--------;;;;CONCLUSION_NOUVELLE_LESION;C3;;;$RECIST$ 
+#------non utilisé--------;;;;Global_conclusion_text;C4;i;;(Maladie stable|r[ée]ponse partielle|maladie progressive)
+#------non utilisé--------;;;;HISTOCANCERREIN2;CONCLUSION;i;;((Leiomyo|Synovialo|angio)(m(y|u)o?lipome|sarcome) *(.pith[ée]lio.de|classique)?|Tumeur hybride|n.phro(blastome|m?e? *kyst(iqu)?e *(adulte|cortical simple)?)|Oncocytome *r.nal|Ad.nome m.tan.phrique|Hemangioblastome|Raret. non .pith[ée]liale|(Carcinome|tumeur) *neuroendocrine du rein|kyst(iqu)?e *(adulte|cortical simple))
+#------non utilisé--------;;;;STADETNM;CONCLUSION;i;;\b(p|y)?T[01234][abcdx]?(( |-|\.)?N[01234+][abcdx]?)?(( |-|\.)?M[01234+][abcdx]?)?\b
+#------non utilisé--------;;;;HISTOCANCERREIN;CONCLUSION;i;;((a|à) cellules? (claires?|chromophobe|de Bellini|.osinophiles)|chromophobe|papillaire *((a|à) *cellules? *claires?|biphasique)?|SDHB d[ée]ficient|difficile (a|à) classer|(a|à) *translocation|m.dullaire *(du rein)?|associe (a|à) la maladie kystique acquise|kystique multiloculaire *((a|à) cellules? claires?)|a stroma leiomyomateux|eosinophile solide et kystique) *(de type (1|2|II|I|inclassable)|.{1,25}translocation.{1,25}(famille MITF|TFE3|TFEB))?
+#------non utilisé--------;;;;HISTOCANCERPOUMON;CONCLUSION;i;;non (à|a) petites? cellules?
+#------non utilisé--------;;;;HISTOCANCERSEIN;CONCLUSION;i;;ca(cr|rc)inome *.[^\.]{0,30} *canalaire
+#------non utilisé--------;;;;CANCER;CONCLUSION;i;;((ad.no)?ca(cr|rc)inom(ateux?s?e?s?|e?s?)|cancer|tumeur)
+#------non utilisé--------;;;;CANCERREIN;CONCLUSION;i;;(tubulo|r.na(le?s?|ux)|rein|tubes collecteurs)
+#------non utilisé--------;;;;CANCERPOUMON;CONCLUSION;i;;(d?u? *poumon|l.pidiques?|acinaire|poumon|pulmonaire)
+#------non utilisé--------;;;;CANCERURINAIRE;CONCLUSION;i;;(uroth[ée]liale?|urinaires?)
+#------non utilisé--------;;;;GLOBAL_CONCLUSION_VPR;C4;i;;(NA|0|PR|SD|RC|CR|PD|RP|MS|MP|NON|Non|non|No|no|(([+-]?\s{0,4}\d+([.,]\d+)?\s{0,4}%))){1}[\s\-\+\=\_\,\;\||\/]{1,4}(NA|0|PR|SD|RC|CR|PD|RP|MS|MP){1}[\s\-\+\=\_\,\;\||\/]{1,4}(OUI|NON|oui|non|Oui|Non|Yes|No|O|N|1|0){1}
+#------non utilisé--------;;;;GLOBAL_CONCLUSION_VPR;CONCLUSION;i;;(NA|0|PR|SD|RC|CR|PD|RP|MS|MP|NON|Non|non|No|no|(([+-]?\s{0,4}\d+([.,]\d+)?\s{0,4}%))){1}[\s\-\+\=\_\,\;\||\/]{1,4}(NA|0|PR|SD|RC|CR|PD|RP|MS|MP){1}[\s\-\+\=\_\,\;\||\/]{1,4}(OUI|NON|oui|non|Oui|Non|Yes|No|O|N|1|0){1}
+#------non utilisé--------;;;;GLOBAL_CONCLUSION_VPR;ALL;i;;(NA|0|PR|SD|RC|CR|PD|RP|MS|MP|NON|Non|non|No|no|(([+-]?\s{0,4}\d+([.,]\d+)?\s{0,4}%))){1}[\s\-\+\=\_\,\;\||\/]{1,4}(NA|0|PR|SD|RC|CR|PD|RP|MS|MP){1}[\s\-\+\=\_\,\;\||\/]{1,4}(OUI|NON|oui|non|Oui|Non|Yes|No|O|N|1|0){1}
