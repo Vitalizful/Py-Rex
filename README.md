@@ -37,6 +37,8 @@ List of files requiered for running Py-Rex :
     - rihdoRegex.py
     - SQLexecution.py
     - writeCSVFile.py
+  
    Result repository where .csv and .ann files will be stored with
+ 
     - brat repository
    
