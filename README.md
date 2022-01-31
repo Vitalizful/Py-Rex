@@ -4,6 +4,8 @@ Developed by David Baudoin
 
 Py-Rex is a Python based regular expression extractor and so much more!
 
+The files are set up for a RECIST extraction on medical reports of CT scans. The scripts are able to perform on other types of files, but you will have to modify the regexex in listRegex.txt, listVarRes.csv and var_rules to do so.
+
 How to use is :
 
 1) Download all the files from this repository
@@ -29,3 +31,5 @@ find data/your_folder_path/ -type f -print0 | xargs -0 -n1 python transfert_CRda
 - you can also use the parallelization in order to shorten the processing time (change -P20 with the amout of CPU core available to you) :
 
 find data/your_folder_path/ -type f -print0 | xargs -0 -n1 -P20 python transfert_CRdataToJson.py --directory config_recist --cr
+
+Py-Rex comes with a normalization system you can adapt to your extraction thanks to the var_rules file.
