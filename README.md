@@ -2,7 +2,7 @@
 
 Developed by David Baudoin
 
-Py-Rex is a Python based regular expression extractor and so much more!
+Py-Rex is developed in Python 3 and uses cascading regular expressions to first define sections within the documents, and identify items within specific sections of the documents (a full document search can also be performed). In addition to the extraction, Py-Rex can handle simple normalization tasks and export to CSV files, REDCap, or a postgresql database.
 
 The files are set up for a RECIST extraction on medical reports of CT scans. The scripts are able to perform on other types of files, but you will have to modify the regexex in listRegex.txt, listVarRes.csv and var_rules to do so.
 
